@@ -3,721 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SaaSaaS LLC — Redefine Your Relationships On Your Own Terms</title>
+  <title>Sean — Building Things</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #0b0d11;
-      --bg-card: #12151b;
-      --bg-card-hover: #181c24;
-      --accent: #e85d3a;
-      --accent-glow: rgba(232, 93, 58, 0.15);
-      --accent-hover: #ff6d4a;
-      --text-white: #f0f0f0;
-      --text-gray: #9ca3af;
-      --text-muted: #6b7280;
-      --border: rgba(255,255,255,0.06);
-      --border-accent: rgba(232, 93, 58, 0.25);
+      --bg: #fafaf9;
+      --bg-card: #ffffff;
+      --text: #1c1917;
+      --text-secondary: #57534e;
+      --text-muted: #a8a29e;
+      --accent: #d97706;
+      --border: #e7e5e4;
+      --radius: 12px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--text-white);
-      background: var(--bg-dark);
-      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Navigation ── */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-    nav.scrolled {
-      background: rgba(11, 13, 17, 0.92);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 1px 0 var(--border);
-    }
-    .nav-logo { height: 36px; }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-gray);
-      font-size: 0.88rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-    .mobile-menu {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.5rem;
-    }
-    .mobile-menu span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text-white);
-      margin: 5px 0;
-      transition: 0.3s;
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
     }
 
-    /* ── Hero ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 7rem 2rem 5rem;
-      position: relative;
-      overflow: hidden;
+    .header {
+      margin-bottom: 3.5rem;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(232,93,58,0.07) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(232,93,58,0.04) 0%, transparent 50%);
-      pointer-events: none;
+    .header img {
+      height: 40px;
+      margin-bottom: 2rem;
     }
-    .hero-logo {
-      max-width: 280px;
-      width: 70%;
-      margin-bottom: 2.5rem;
-      position: relative;
-      z-index: 1;
+    .header h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
     }
-    .hero h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
-      font-weight: 700;
-      color: var(--text-white);
-      max-width: 720px;
-      line-height: 1.15;
-      margin-bottom: 1.25rem;
-      position: relative;
-      z-index: 1;
-    }
-    .hero h1 em {
-      color: var(--accent);
-      font-style: normal;
-    }
-    .hero .hero-sub {
-      font-size: 1.2rem;
-      color: var(--text-gray);
-      max-width: 540px;
-      font-weight: 300;
-      margin-bottom: 2.5rem;
-      position: relative;
-      z-index: 1;
+    .header .welcome {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-top: 0.75rem;
       line-height: 1.7;
     }
-    .hero-cta {
+    .header .welcome strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+    .header .wave {
       display: inline-block;
-      padding: 0.95rem 2.5rem;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      letter-spacing: 0.02em;
-      transition: background 0.2s, box-shadow 0.3s, transform 0.2s;
-      position: relative;
-      z-index: 1;
+      animation: wave 2.5s ease-in-out infinite;
+      transform-origin: 70% 70%;
     }
-    .hero-cta:hover {
-      background: var(--accent-hover);
-      box-shadow: 0 0 30px var(--accent-glow);
-      transform: translateY(-1px);
-    }
-    .scroll-hint {
-      position: absolute;
-      bottom: 2rem;
-      animation: bob 2s ease-in-out infinite;
-    }
-    .scroll-hint svg {
-      width: 24px;
-      height: 24px;
-      stroke: var(--text-muted);
-    }
-    @keyframes bob {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(8px); }
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg); }
+      10% { transform: rotate(14deg); }
+      20% { transform: rotate(-8deg); }
+      30% { transform: rotate(14deg); }
+      40% { transform: rotate(-4deg); }
+      50% { transform: rotate(10deg); }
+      60%, 100% { transform: rotate(0deg); }
     }
 
-    /* ── Section commons ── */
-    section { padding: 6rem 2rem; }
-    .section-label {
-      text-transform: uppercase;
-      font-size: 0.72rem;
-      letter-spacing: 0.25em;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 0.75rem;
+    .prose {
+      margin-bottom: 3rem;
     }
-    .section-heading {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 700;
-      color: var(--text-white);
-      margin-bottom: 1.25rem;
-      line-height: 1.2;
-    }
-    .container { max-width: 1080px; margin: 0 auto; }
-
-    /* ── The Problem ── */
-    .problem {
-      background: var(--bg-dark);
-      border-top: 1px solid var(--border);
-    }
-    .problem-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .problem-text p {
-      color: var(--text-gray);
+    .prose p {
+      color: var(--text-secondary);
       font-size: 1.05rem;
-      font-weight: 300;
+      font-weight: 400;
       margin-bottom: 1.25rem;
       line-height: 1.8;
     }
-    .problem-text strong {
-      color: var(--text-white);
+    .prose p:last-child {
+      margin-bottom: 0;
+    }
+    .prose strong {
+      color: var(--text);
       font-weight: 500;
     }
-    .problem-visual {
-      display: flex;
-      justify-content: center;
-    }
-    .moat-graphic {
-      width: 100%;
-      max-width: 360px;
-      aspect-ratio: 1;
-      border-radius: 16px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .moat-graphic::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 30%, var(--accent-glow) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .moat-icon {
-      font-size: 3.5rem;
-      position: relative;
-      z-index: 1;
-    }
-    .moat-label {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-gray);
-      text-align: center;
-      position: relative;
-      z-index: 1;
-      line-height: 1.5;
-    }
-    .moat-label span {
-      display: block;
-      color: var(--accent);
-      font-size: 1.4rem;
-      margin-top: 0.25rem;
-    }
 
-    /* ── How We Work ── */
-    .how {
-      background: var(--bg-card);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .how .section-label,
-    .how .section-heading { text-align: center; }
-    .how-intro {
-      text-align: center;
-      color: var(--text-gray);
-      font-weight: 300;
-      font-size: 1.05rem;
-      max-width: 600px;
-      margin: 0 auto 3rem;
-    }
-    .how-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    .how-card {
-      background: var(--bg-dark);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2.5rem 2rem;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    .how-card:hover {
-      border-color: var(--border-accent);
-      box-shadow: 0 0 30px var(--accent-glow);
-    }
-    .how-step {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.15em;
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
       text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
       margin-bottom: 1rem;
     }
-    .how-card h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      color: var(--text-white);
-    }
-    .how-card p {
-      color: var(--text-gray);
-      font-size: 0.92rem;
-      font-weight: 300;
-      line-height: 1.7;
-    }
 
-    /* ── Lock-in Tactics / The Moat ── */
-    .tactics {
-      background: var(--bg-dark);
-    }
-    .tactics .section-label,
-    .tactics .section-heading { text-align: center; }
-    .tactics-sub {
-      text-align: center;
-      color: var(--text-gray);
-      font-weight: 300;
-      font-size: 1.05rem;
-      max-width: 600px;
-      margin: 0 auto 3rem;
-    }
-    .tactics-grid {
+    .interests {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
     }
-    .tactic-card {
+    .interest {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
-      display: flex;
-      gap: 1.25rem;
-      align-items: flex-start;
-      transition: border-color 0.3s;
+      border-radius: var(--radius);
+      padding: 1.25rem;
     }
-    .tactic-card:hover {
-      border-color: var(--border-accent);
-    }
-    .tactic-icon {
-      font-size: 1.6rem;
-      flex-shrink: 0;
-      margin-top: 0.15rem;
-    }
-    .tactic-card h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text-white);
-      margin-bottom: 0.4rem;
-    }
-    .tactic-card p {
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      font-weight: 300;
-      line-height: 1.6;
-    }
-
-    /* ── FAQ ── */
-    .faq {
-      background: var(--bg-card);
-      border-top: 1px solid var(--border);
-    }
-    .faq .section-label,
-    .faq .section-heading { text-align: center; }
-    .faq-list {
-      max-width: 700px;
-      margin: 3rem auto 0;
-    }
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-      padding: 1.5rem 0;
-    }
-    .faq-question {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      background: none;
-      border: none;
-      width: 100%;
-      text-align: left;
-      font-family: 'Inter', sans-serif;
-      font-size: 1.02rem;
-      font-weight: 500;
-      color: var(--text-white);
-      padding: 0;
-    }
-    .faq-toggle {
+    .interest-icon {
       font-size: 1.4rem;
-      color: var(--accent);
-      transition: transform 0.3s;
-      flex-shrink: 0;
-      margin-left: 1rem;
+      margin-bottom: 0.5rem;
     }
-    .faq-item.open .faq-toggle { transform: rotate(45deg); }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease;
+    .interest h3 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
     }
-    .faq-item.open .faq-answer {
-      max-height: 250px;
-      padding-top: 1rem;
-    }
-    .faq-answer p {
-      color: var(--text-gray);
-      font-size: 0.95rem;
-      font-weight: 300;
-      line-height: 1.7;
-    }
-
-    /* ── Contact ── */
-    .contact {
-      background: var(--bg-dark);
-      text-align: center;
-      border-top: 1px solid var(--border);
-    }
-    .contact-body {
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    .contact-body > p {
-      color: var(--text-gray);
-      font-weight: 300;
-      font-size: 1.05rem;
-      margin-bottom: 2.5rem;
-    }
-    .signal-wrapper {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 2rem 3rem;
-      border-radius: 16px;
-    }
-    .signal-wrapper img {
-      width: 160px;
-      height: 160px;
-      border-radius: 10px;
-    }
-    .signal-label {
+    .interest p {
       font-size: 0.82rem;
       color: var(--text-muted);
-      letter-spacing: 0.08em;
-      font-weight: 500;
+      line-height: 1.5;
     }
 
-    /* ── Footer ── */
-    footer {
-      background: var(--bg-dark);
-      border-top: 1px solid var(--border);
-      color: var(--text-muted);
+    .reach-out {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
       text-align: center;
-      padding: 2.5rem 2rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.03em;
+      margin-bottom: 3rem;
     }
-    footer strong {
-      color: var(--text-gray);
-      font-weight: 500;
+    .reach-out h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .reach-out .sub {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .reach-out img {
+      width: 150px;
+      height: 150px;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+    }
+    .reach-out .signal-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
     }
 
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .mobile-menu { display: block; }
-      .problem-content { grid-template-columns: 1fr; gap: 2.5rem; }
-      .problem-visual { order: -1; }
-      .moat-graphic { max-width: 260px; }
-      .how-grid { grid-template-columns: 1fr; }
-      .tactics-grid { grid-template-columns: 1fr; }
+    footer {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--text-muted);
     }
 
-    /* ── Fade-in ── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+    @media (max-width: 480px) {
+      .page { padding: 2.5rem 1.25rem 4rem; }
+      .interests { grid-template-columns: 1fr; }
+      .header h1 { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav id="navbar">
-    <img class="nav-logo" src="copy-logo.png" alt="SaaSaaS LLC">
-    <ul class="nav-links">
-      <li><a href="#problem">The Problem</a></li>
-      <li><a href="#how">How We Work</a></li>
-      <li><a href="#tactics">The Moat</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact">Talk to Us</a></li>
-    </ul>
-    <button class="mobile-menu" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+  <div class="page">
 
-  <!-- Hero -->
-  <section class="hero">
-    <img class="hero-logo" src="copy-logo.png" alt="SaaSaaS LLC">
-    <h1>Redefine your <em>Relationships</em> on your own terms</h1>
-    <p class="hero-sub">Your SaaS vendors built moats to keep you trapped. We fill them in. SaaSaaS finds toxic lock-in and gives you a way out.</p>
-    <a href="#problem" class="hero-cta">See How It Works</a>
-    <div class="scroll-hint">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
-        <path d="M12 5v14M5 12l7 7 7-7"/>
-      </svg>
+    <div class="header">
+      <h1>Hey, I'm Sean. <span class="wave">&#x1F44B;</span></h1>
+      <p class="welcome">Welcome to <strong>SaaSaaS LLC</strong> — <strong>S</strong>ean's <strong>A</strong>pps <strong>a</strong>nd <strong>S</strong>oftware <strong>a</strong>s <strong>a</strong> <strong>S</strong>ervice.</p>
     </div>
-  </section>
 
-  <!-- The Problem -->
-  <section class="problem" id="problem">
-    <div class="container">
-      <div class="problem-content">
-        <div class="problem-text fade-in">
-          <p class="section-label">The Problem</p>
-          <h2 class="section-heading">Your vendor doesn't want you to leave.</h2>
-          <p>Proprietary data formats. Punishing export processes. Contracts designed by retention teams, not product teams. <strong>The modern SaaS model is built on a simple bet: switching costs will keep you paying.</strong></p>
-          <p>They call it a competitive moat. We call it what it is — a trap. And it's time someone did something about it.</p>
-        </div>
-        <div class="problem-visual fade-in">
-          <div class="moat-graphic">
-            <div class="moat-icon">&#x1F3F0;</div>
-            <div class="moat-label">
-              They built the moat.
-              <span>We fill it in.</span>
-            </div>
-          </div>
-        </div>
+    <div class="prose">
+      <p>I've spent my career building things and standing up for the people who use them. Testing, engineering, management — the title changed, but the instinct didn't: <strong>I was always the last line of defense for the customer.</strong></p>
+      <p>I believe tech should empower people, not trap them. I never wanted to mislead anyone or leave them stranded. That's a tough stance to hold in an industry that rewards the opposite — and eventually, nobody's going to pay you to go against the grain.</p>
+      <p>So here I am, <strong>figuring it out on my own</strong>. I'm building apps, exploring SaaS ideas, and working toward something I can be proud of. I never chased wealth — the job gave me access to the toys, and that was enough. Now I'm learning what it takes to build from nothing, on my own terms.</p>
+      <p>If any of that resonates, or you just want to say hi, I'd love to hear from you.</p>
+    </div>
+
+    <p class="section-label">What I'm exploring</p>
+    <div class="interests">
+      <div class="interest">
+        <div class="interest-icon">&#x1F6E0;&#xFE0F;</div>
+        <h3>Apps & Tools</h3>
+        <p>Building small, useful software that does one thing well.</p>
+      </div>
+      <div class="interest">
+        <div class="interest-icon">&#x1F4A1;</div>
+        <h3>SaaS Ideas</h3>
+        <p>Exploring problems worth solving and products worth paying for.</p>
+      </div>
+      <div class="interest">
+        <div class="interest-icon">&#x1F331;</div>
+        <h3>Starting Fresh</h3>
+        <p>Starting from nothing — but with the integrations, the code, and the know-how to build practically anything. Years of gluing systems together and pushing new tech past its limits into places it wasn't meant to go.</p>
+      </div>
+      <div class="interest">
+        <div class="interest-icon">&#x1F91D;</div>
+        <h3>Connecting</h3>
+        <p>Talking to people who are building, thinking, or just figuring it out too.</p>
       </div>
     </div>
-  </section>
 
-  <!-- How We Work -->
-  <section class="how" id="how">
-    <div class="container">
-      <p class="section-label">How We Work</p>
-      <h2 class="section-heading">Three steps to freedom</h2>
-      <p class="how-intro">We identify predatory SaaS lock-in, build migration paths, and give you back the leverage your vendor took away.</p>
-      <div class="how-grid">
-        <div class="how-card fade-in">
-          <div class="how-step">01 &mdash; Identify</div>
-          <h3>Find the Lock-in</h3>
-          <p>We audit your SaaS stack for toxic vendor patterns — proprietary formats, hidden switching costs, artificial dependencies, and data hostage tactics.</p>
-        </div>
-        <div class="how-card fade-in">
-          <div class="how-step">02 &mdash; Bridge</div>
-          <h3>Fill the Moat</h3>
-          <p>We build the tools, integrations, and migration paths that your vendor deliberately never made. Open formats. Clean exports. Real portability.</p>
-        </div>
-        <div class="how-card fade-in">
-          <div class="how-step">03 &mdash; Liberate</div>
-          <h3>Take Back Control</h3>
-          <p>Choose to stay because the product is good — not because leaving is impossible. We give you leverage. What you do with it is up to you.</p>
-        </div>
-      </div>
+    <div class="reach-out">
+      <h2>Let's talk</h2>
+      <p class="sub">No forms, no funnels. Just a conversation.</p>
+      <img src="c474f280492db27fc806ad6b9cc0b7fe2a7e70defa585a7085902901abb0a249.png" alt="Signal QR code">
+      <p class="signal-note">Scan to reach me on Signal</p>
     </div>
-  </section>
 
-  <!-- The Moat: Lock-in Tactics -->
-  <section class="tactics" id="tactics">
-    <div class="container">
-      <p class="section-label">The Moat</p>
-      <h2 class="section-heading">Lock-in tactics we fight</h2>
-      <p class="tactics-sub">These are the patterns vendors use to make leaving painful. We've seen them all — and we know how to beat them.</p>
-      <div class="tactics-grid">
-        <div class="tactic-card fade-in">
-          <div class="tactic-icon">&#x1F512;</div>
-          <div>
-            <h3>Proprietary Data Formats</h3>
-            <p>Your data stored in formats only their tools can read. Designed to make export a nightmare.</p>
-          </div>
-        </div>
-        <div class="tactic-card fade-in">
-          <div class="tactic-icon">&#x1F578;&#xFE0F;</div>
-          <div>
-            <h3>Artificial Dependencies</h3>
-            <p>Bundling features so removing one product means breaking five others. Complexity as a retention strategy.</p>
-          </div>
-        </div>
-        <div class="tactic-card fade-in">
-          <div class="tactic-icon">&#x1F4B8;</div>
-          <div>
-            <h3>Punishing Exit Costs</h3>
-            <p>Early termination fees, data extraction charges, and "migration assistance" priced to discourage leaving.</p>
-          </div>
-        </div>
-        <div class="tactic-card fade-in">
-          <div class="tactic-icon">&#x23F3;</div>
-          <div>
-            <h3>Slow-Drip Price Hikes</h3>
-            <p>Small annual increases that compound until you're paying double — but switching feels too expensive to bother.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <footer>
+      <p>SaaSaaS LLC &middot; &copy; 2026</p>
+    </footer>
 
-  <!-- FAQ -->
-  <section class="faq" id="faq">
-    <div class="container">
-      <p class="section-label">FAQ</p>
-      <h2 class="section-heading">Fair questions</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            What does SaaSaaS actually do?
-            <span class="faq-toggle">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>We find SaaS products that use lock-in to trap customers, and we build the migration tools, integrations, and open alternatives that give businesses a real choice. If a vendor built a moat, we fill it in.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            Who is this for?
-            <span class="faq-toggle">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>CTOs, IT leaders, and founders who are tired of being held hostage by their software stack. If you've ever wanted to leave a vendor but couldn't — we're for you.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            Do you replace the SaaS tools themselves?
-            <span class="faq-toggle">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Not necessarily. Sometimes the product is great — the lock-in isn't. We give you the ability to stay by choice, or leave when you're ready. That's a relationship, not a hostage situation.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            How can I get in touch?
-            <span class="faq-toggle">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Reach out on Signal — it's private, encrypted, and exactly how we think business communication should work. Scan the QR code at the bottom of this page.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
 
-  <!-- Contact -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="contact-body fade-in">
-        <p class="section-label">Talk to Us</p>
-        <h2 class="section-heading">Ready to break free?</h2>
-        <p>We keep it simple. No contact forms. No sales funnel. Just a direct, encrypted conversation on Signal.</p>
-        <div class="signal-wrapper">
-          <img src="c474f280492db27fc806ad6b9cc0b7fe2a7e70defa585a7085902901abb0a249.png" alt="Signal QR code">
-          <span class="signal-label">Reach us on Signal</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <strong>SaaSaaS LLC</strong> &nbsp;&middot;&nbsp; Redefine your relationships on your own terms &nbsp;&middot;&nbsp; &copy; 2026
-  </footer>
-
-  <!-- Scripts -->
-  <script>
-    // Navbar scroll
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-    });
-
-    // Fade-in on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Mobile nav
-    const mobileStyle = document.createElement('style');
-    mobileStyle.textContent = `
-      @media (max-width: 768px) {
-        .nav-links.show {
-          display: flex !important;
-          flex-direction: column;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          background: rgba(11,13,17,0.97);
-          backdrop-filter: blur(16px);
-          padding: 1.5rem 2rem;
-          gap: 1rem;
-          border-bottom: 1px solid var(--border);
-        }
-      }
-    `;
-    document.head.appendChild(mobileStyle);
-  </script>
 </body>
 </html>
