@@ -127,6 +127,57 @@
       line-height: 1.5;
     }
 
+    .portal-card {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 3rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .portal-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(28, 25, 23, 0.08);
+      border-color: var(--accent);
+    }
+    .portal-card__img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #fbf5e4;
+    }
+    .portal-card__body {
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+    .portal-card__kicker {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+    .portal-card__title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .portal-card__desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+    .portal-card__cta {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
     .reach-out {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -210,6 +261,16 @@
         <p>Talking to people who are building, thinking, or just figuring it out too.</p>
       </div>
     </div>
+
+    <a class="portal-card" href="https://portal.saasaas.llc" rel="noopener">
+      <img class="portal-card__img" src="portal-tile.jpeg" alt="Sergio-Aragonés-style cartoon: a basement data center with five busy bearded gnomes in pointy red caps managing server racks labeled CUST-01, CUST-02, CUST-03 — one swinging on an ethernet cable, one oiling a hard drive, one shouting 'TICKET CLOSED!' into a headset, one pushing a cart of glowing CPUs, one soldering on a stepladder. A banner across the top reads 'MY CUSTOMER PORTAL' and a sign reads 'portal.saasaas.llc'.">
+      <div class="portal-card__body">
+        <div class="portal-card__kicker">Customer Portal</div>
+        <h2 class="portal-card__title">My customer portal</h2>
+        <p class="portal-card__desc">Per-client engagement logs, invoices, and a thread for the work-in-flight. If you're a client, sign in with the email I have on file — a magic link arrives in 30 seconds, no password.</p>
+        <span class="portal-card__cta">portal.saasaas.llc &rarr;</span>
+      </div>
+    </a>
 
     <div class="reach-out">
       <h2>Let's talk</h2>
